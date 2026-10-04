@@ -49,7 +49,6 @@ function getSolveDisplay(solve: Solve, activeSession: ActiveSession): string {
   }
 
  if ('solved' in solve) {
-   const ONE_HOUR = 3_600_000;
 
    const baseDisplayTime =
      activeSession.mbldDisplayValue === 'wca' && solve.time > ONE_HOUR ? ONE_HOUR : solve.time;
