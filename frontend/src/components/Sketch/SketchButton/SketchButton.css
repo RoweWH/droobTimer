@@ -1,0 +1,61 @@
+.sketch-button {
+  --button-edge-width: 14px;
+  --button-slice-overlap: 4px;
+
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 16px;
+
+  color: var(--text-primary);
+  font: inherit;
+
+  background: transparent;
+  border: 0;
+}
+
+.sketch-button__background {
+  position: absolute;
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+.sketch-button__piece {
+  position: absolute;
+  top: 0;
+
+  height: 100%;
+}
+
+.sketch-button__piece--left {
+  left: 0;
+  width: var(--button-edge-width);
+}
+
+.sketch-button__piece--middle {
+  left: calc(var(--button-edge-width) - var(--button-slice-overlap));
+  width: calc(
+    100% - (var(--button-edge-width) * 2) + (var(--button-slice-overlap) * 2)
+  );
+}
+
+.sketch-button__piece--right {
+  right: 0;
+  width: var(--button-edge-width);
+}
+
+.sketch-button__label {
+  position: relative;
+  font: inherit;
+}
+
+.sketch-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}

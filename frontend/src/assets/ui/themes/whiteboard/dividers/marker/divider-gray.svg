@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="5 0 1190 52" fill="none" preserveAspectRatio="none">
+  <!-- Style 6: broad broken dried-marker swipes, no border -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M-18 15H146M173 15H333M365 15H518M557 15H730M765 15H923M958 15H1119M1148 15H1220" stroke="#7d8187" stroke-width="8.5" opacity=".77"/>
+    <path d="M8 25H118M144 25H286M321 25H471M506 25H648M684 25H840M877 25H1016M1051 25H1191" stroke="#7d8187" stroke-width="9.2" opacity=".7"/>
+    <path d="M-10 36H91M120 36H247M280 36H421M454 36H597M632 36H781M818 36H961M997 36H1138M1166 36H1220" stroke="#7d8187" stroke-width="8.1" opacity=".73"/>
+
+    <path d="M4 12H88M198 12H278M388 12H468M580 12H666M785 12H862M981 12H1065" stroke="#a8abb0" stroke-width="2.6" opacity=".63"/>
+    <path d="M58 28H167M363 28H448M691 28H773M1014 28H1104" stroke="#4c4f54" stroke-width="2.2" opacity=".42"/>
+    <path d="M23 40H71M184 40H229M350 40H398M521 40H565M702 40H751M881 40H927M1061 40H1110" stroke="#a8abb0" stroke-width="3.1" opacity=".54"/>
+
+    <path d="M135 17H157M340 13H355M526 18H545M739 13H752M930 18H946M1127 13H1138" stroke="#7d8187" stroke-width="4.2" opacity=".48"/>
+  </g>
+</svg>
+

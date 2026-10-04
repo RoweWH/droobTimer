@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="5 0 1190 52" fill="none" preserveAspectRatio="none">
+  <!-- Style 9: stacked incomplete horizontal lines, no border -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M-12 12H118M146 13H278M315 11H449M477 13H623M657 12H792M827 13H965M995 11H1128M1157 13H1215" stroke="#8a62b8" stroke-width="3.2" opacity=".67"/>
+    <path d="M18 20H169M198 22H342M371 19H515M549 21H690M724 20H871M903 22H1047M1078 19H1191" stroke="#593984" stroke-width="2.5" opacity=".48"/>
+    <path d="M-5 29H98M126 27H257M289 30H425M455 28H583M616 30H756M790 27H918M948 30H1084M1117 28H1208" stroke="#8a62b8" stroke-width="4.1" opacity=".72"/>
+    <path d="M31 37H153M184 39H316M348 36H486M519 39H652M687 37H823M856 39H992M1024 36H1165" stroke="#b194d0" stroke-width="3.1" opacity=".6"/>
+    <path d="M-8 43H76M108 42H229M263 44H391M425 41H557M592 44H719M753 42H884M919 44H1044M1078 41H1210" stroke="#8a62b8" stroke-width="2.8" opacity=".59"/>
+
+    <path d="M67 16H105M258 25H291M468 33H501M676 17H708M882 34H918M1089 24H1127" stroke="#593984" stroke-width="5.2" opacity=".42"/>
+    <path d="M164 8H219M385 16H443M603 7H659M822 17H878M1042 8H1098" stroke="#b194d0" stroke-width="1.8" opacity=".55"/>
+  </g>
+</svg>
+

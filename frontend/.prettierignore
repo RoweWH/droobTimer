@@ -1,0 +1,14 @@
+node_modules
+dist
+build
+.vite
+.cache
+.turbo
+.next
+.pnpm-debug.log
+.pnp.*
+.DS_Store
+/.vscode
+public
+coverage
+storybook-static

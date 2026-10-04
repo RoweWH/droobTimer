@@ -1,0 +1,202 @@
+.settings-modal {
+  width: min(520px, calc(100vw - 32px));
+  max-height: min(760px, calc(100vh - 32px));
+}
+
+.settings-modal__inner {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+
+  gap: 18px;
+  padding: 18px;
+}
+
+.settings-modal__header {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 16px;
+}
+
+
+.settings-modal__title {
+  margin: 0;
+
+  font-family: var(--font-title);
+  font-size: 42px;
+  line-height: 1;
+}
+
+.settings-modal__close-button {
+  position: absolute;
+  right: 0;
+
+  display: grid;
+  place-items: center;
+
+  width: 36px;
+  height: 36px;
+
+  padding: 0;
+
+  background: transparent;
+  border: 0;
+
+  font: inherit;
+  font-size: 28px;
+  line-height: 1;
+
+  color: inherit;
+  cursor: pointer;
+}
+
+.settings-modal__content {
+  display: grid;
+  align-content: start;
+
+  gap: 20px;
+  padding-right: 4px;
+}
+
+.settings-modal__feature-section {
+  display: grid;
+  gap: 14px;
+}
+
+.settings-modal__setting-group {
+  display: grid;
+  gap: 8px;
+}
+
+.settings-modal__section-title {
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.settings-modal__setting-group > .sketch-select {
+  width: min(100%, 320px);
+}
+
+.settings-modal__voice-row {
+  display: flex;
+  align-items: center;
+
+  width: min(100%, 356px);
+  gap: 6px;
+}
+
+.settings-modal__voice-row .sketch-select {
+  flex: 1;
+  min-width: 0;
+}
+
+.settings-modal__voice-test {
+  flex: 0 0 auto;
+
+  display: grid;
+  place-items: center;
+
+  width: 28px;
+  height: 28px;
+
+  padding: 0;
+
+  background: transparent;
+  border: 0;
+
+  font: inherit;
+  font-size: 14px;
+  line-height: 1;
+
+  color: inherit;
+  cursor: pointer;
+}
+
+.settings-modal__voice-test:hover:not(:disabled) {
+  opacity: 0.65;
+}
+
+.settings-modal__voice-test:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.settings-modal__inspection-exceptions {
+  display: grid;
+  gap: 8px;
+}
+
+.settings-modal__inspection-exceptions-label {
+  font-size: 16px;
+}
+
+.settings-modal__inspection-event-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.settings-modal__inspection-event {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 48px;
+  min-height: 32px;
+
+  padding: 5px 10px;
+
+  border: 2px solid currentColor;
+  border-radius: 8px;
+
+  cursor: pointer;
+  user-select: none;
+}
+
+.settings-modal__inspection-event-input {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+.settings-modal__inspection-event-label {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.settings-modal__inspection-event-x {
+  margin-left: 5px;
+
+  font-size: 18px;
+  line-height: 1;
+}
+
+.settings-modal__inspection-event.is-excluded {
+  opacity: 0.65;
+  text-decoration: line-through;
+}
+
+.settings-modal__inspection-event.is-required {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.settings-modal__actions {
+  display: flex;
+  justify-content: flex-end;
+
+  padding-top: 4px;
+}

@@ -1,0 +1,30 @@
+.inspection-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--background-primary);
+  background-image: var(--background-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.inspection-overlay__time {
+  font-size: 10rem;
+  font-family: var(--font-title);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-primary);
+}
+
+.inspection-overlay__time[data-color='orange'] {
+  color: #f59e0b;
+}
+
+.inspection-overlay__time[data-color='red'] {
+  color: #ef4444;
+}

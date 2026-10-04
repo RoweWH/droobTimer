@@ -1,0 +1,38 @@
+.solve-row {
+  display: grid;
+  grid-template-columns: 2rem 1fr 1fr 1fr;
+  align-items: center;
+
+  width: 100%;
+  min-height: 2.5rem;
+}
+
+.solve-row__number {
+  text-align: right;
+  opacity: 0.5;
+}
+
+.solve-row button {
+  padding: 0;
+
+  border: none;
+  background: none;
+
+  font: inherit;
+  font-weight: normal;
+  color: inherit;
+  text-align: center;
+
+  cursor: pointer;
+
+  transition: transform 0.1s ease;
+}
+
+.solve-row__solve:hover,
+.solve-row__average:not(:disabled):hover {
+  transform: scale(1.05);
+}
+
+.solve-row__average:disabled {
+  cursor: default;
+}

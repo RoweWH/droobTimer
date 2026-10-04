@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Patrick+Hand&family=Poor+Story&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Reenie+Beanie&family=Schoolbell&family=Walter+Turncoat&display=swap');
+
+[data-theme='paper'] {
+  --background-primary: #f6f2e8;
+  --background-image: url('./assets/ui/themes/paper/backgrounds/white.png');
+
+  --text-primary: #1b1b1b;
+  --outline-primary: #2b2a28;
+
+  --font-ui: 'Patrick Hand', cursive;
+  --font-title: 'Gaegu', cursive;
+  --font-note: 'Poor Story', cursive;
+}
+
+[data-theme='chalkboard'] {
+  --background-primary: #234b3d;
+  --background-image: url('./assets/ui/themes/chalkboard/backgrounds/black.png');
+
+  --text-primary: #f4f1df;
+  --outline-primary: #f4f1df;
+
+  --font-ui: 'Schoolbell', cursive;
+  --font-title: 'Walter Turncoat', cursive;
+  --font-note: 'Kalam', cursive;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100dvh;
+
+  background-color: var(--background-primary);
+  background-image: var(--background-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: var(--text-primary);
+
+  font-family: var(--font-ui);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+button,
+input,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}

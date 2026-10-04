@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 48" preserveAspectRatio="none"><defs><filter id="chalk_c6c6a88a" x="-8%" y="-8%" width="116%" height="116%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="1.05" xChannelSelector="R" yChannelSelector="G"/></filter></defs><g filter="url(#chalk_c6c6a88a)" opacity=".97">
+  <path
+    d="M2 3.2
+       L8.8 3.4
+       C14.0 3.5 17.0 7.2 17.0 12.5
+       L16.9 35.2
+       C16.8 41.3 13.8 44.8 9.0 44.8
+       L2 44.7"
+    fill="none"
+    stroke="#f3f0e6"
+    stroke-width="2.1"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    vector-effect="non-scaling-stroke"
+  />
+</g></svg>

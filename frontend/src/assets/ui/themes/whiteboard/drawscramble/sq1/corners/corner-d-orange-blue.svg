@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="-2.75 -2.75 5.5 2.82"
+     preserveAspectRatio="xMidYMax meet"
+     role="img"
+     aria-labelledby="title desc"
+     shape-rendering="geometricPrecision">
+  <title id="title">DFR — white / green / red</title>
+  <desc id="desc">Square-1 corner using exact shared radial geometry; occupies sixty degrees.</desc>
+  <g stroke="#000000"
+     stroke-width="0.055"
+     stroke-linejoin="miter"
+     stroke-linecap="butt">
+        <polygon points="0.000000,0.000000 -0.000000,-2.638958 -0.965926,-1.673033" fill="#1200FF"/>
+    <polygon points="0.000000,0.000000 0.965926,-1.673033 -0.000000,-2.638958" fill="#FF8C00"/>
+    <polygon points="0.000000,0.000000 0.637511,-1.104202 -0.000000,-1.741713 -0.637511,-1.104202" fill="#FFFFFF"/>
+
+  </g>
+</svg>

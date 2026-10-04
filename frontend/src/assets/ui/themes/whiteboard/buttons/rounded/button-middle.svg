@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 48" preserveAspectRatio="none">
+  <path
+    d="M0 3.2 C11.5 3.0 27.7 3.5 40 3.2"
+    fill="none"
+    stroke="#16a34a"
+    stroke-width="2.1"
+    stroke-linecap="round"
+    vector-effect="non-scaling-stroke"
+  />
+  <path
+    d="M0 44.7 C12.8 44.5 27.2 45.0 40 44.7"
+    fill="none"
+    stroke="#16a34a"
+    stroke-width="2.1"
+    stroke-linecap="round"
+    vector-effect="non-scaling-stroke"
+  />
+</svg>

@@ -1,0 +1,145 @@
+.session-settings-modal {
+  width: min(520px, calc(100vw - 32px));
+  max-height: min(760px, calc(100vh - 32px));
+}
+
+.session-settings-modal__inner {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+
+  gap: 18px;
+  padding: 18px;
+}
+
+.session-settings-modal__header {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 16px;
+}
+
+.session-settings-modal__title {
+  margin: 0;
+
+  font-family: var(--font-title);
+  font-size: 42px;
+  line-height: 1;
+}
+
+.session-settings-modal__close-button {
+  position: absolute;
+  right: 0;
+
+  display: grid;
+  place-items: center;
+
+  width: 36px;
+  height: 36px;
+
+  padding: 0;
+
+  background: transparent;
+  border: 0;
+
+  font: inherit;
+  font-size: 28px;
+  line-height: 1;
+
+  color: inherit;
+  cursor: pointer;
+}
+
+.session-settings-modal__content {
+  display: grid;
+  align-content: start;
+
+  gap: 20px;
+  padding-right: 4px;
+}
+
+.session-settings-modal__feature-section {
+  display: grid;
+  gap: 14px;
+}
+
+.session-settings-modal__setting-group {
+  display: grid;
+  gap: 8px;
+}
+
+.session-settings-modal__section-title {
+  margin: 0;
+
+  font-size: 18px;
+  line-height: 1.2;
+  text-transform: lowercase;
+}
+
+.session-settings-modal__setting-group > .sketch-select,
+.session-settings-modal__setting-group > .sketch-input,
+.session-settings-modal__setting-group > .session-settings-modal__two-column,
+.session-settings-modal__phase-row > .sketch-input {
+  width: min(100%, 320px);
+}
+
+.session-settings-modal__phase-list {
+  display: grid;
+  gap: 8px;
+}
+
+.session-settings-modal__phase-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.session-settings-modal__remove-phase {
+  flex: 0 0 auto;
+
+  padding: 7px 10px;
+
+  background: transparent;
+  border: 2px solid currentColor;
+  border-radius: 8px;
+
+  color: inherit;
+  font: inherit;
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.session-settings-modal__add-phase {
+  width: fit-content;
+}
+
+.session-settings-modal__two-column {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.session-settings-modal__average-group {
+  display: grid;
+  gap: 8px;
+}
+
+.session-settings-modal__average-label {
+  font-size: 16px;
+  line-height: 1.2;
+  text-transform: lowercase;
+}
+
+.session-settings-modal__actions {
+  display: flex;
+  justify-content: flex-end;
+
+  padding-top: 4px;
+}

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="-2.75 -2.75 5.5 2.82"
+     preserveAspectRatio="xMidYMax meet"
+     role="img"
+     aria-labelledby="title desc"
+     shape-rendering="geometricPrecision">
+  <title id="title">DF — white / red</title>
+  <desc id="desc">Square-1 edge using exact shared radial geometry; occupies thirty degrees.</desc>
+  <g stroke="#000000"
+     stroke-width="0.055"
+     stroke-linejoin="miter"
+     stroke-linecap="butt">
+        <polygon points="0.000000,0.000000 -0.500000,-1.866025 0.500000,-1.866025" fill="#FF8C00"/>
+    <polygon points="0.000000,0.000000 -0.330000,-1.231577 0.330000,-1.231577" fill="#FFFFFF"/>
+
+  </g>
+</svg>

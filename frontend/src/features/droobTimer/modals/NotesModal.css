@@ -1,0 +1,85 @@
+.notes-modal {
+  width: 500px;
+}
+
+.notes-modal__inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  padding: 2rem;
+}
+
+.notes-modal__header {
+  position: relative;
+
+  width: 100%;
+}
+
+.notes-modal__header h2 {
+  margin: 0;
+
+  font-size: 1.4rem;
+  font-weight: normal;
+  text-align: center;
+}
+
+.notes-modal__close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  padding: 0;
+
+  color: inherit;
+  font: inherit;
+  font-size: 1.8rem;
+
+  background: none;
+  border: none;
+
+  cursor: pointer;
+}
+
+.notes-modal__input {
+  flex: 1;
+
+  width: 100%;
+  min-height: 350px;
+
+  margin-top: 2rem;
+  padding: 0 1rem;
+
+  color: inherit;
+  font: inherit;
+  font-size: 1.2rem;
+  line-height: 1.6;
+
+  background: transparent;
+  border: none;
+  outline: none;
+
+  resize: none;
+  scrollbar-width: none;
+}
+
+.notes-modal__input::-webkit-scrollbar {
+  display: none;
+}
+
+.notes-modal__input:focus {
+  outline: none;
+}
+
+.notes-modal__input::placeholder {
+  color: inherit;
+  opacity: 0.35;
+}
+
+.notes-modal__save {
+  min-width: 140px;
+
+  align-self: center;
+
+  margin-top: 1.5rem;
+}

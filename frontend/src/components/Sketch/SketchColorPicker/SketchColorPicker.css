@@ -1,0 +1,108 @@
+.sketch-color-picker__title {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: var(--text-primary);
+
+  font-family: var(--font-title);
+  text-align: center;
+}
+
+.sketch-color-picker__options {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+
+  gap: 4px;
+}
+
+.sketch-color-picker__options button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  background: transparent;
+  border: 0;
+}
+
+.sketch-color-picker__options .sketch-color-swatch {
+  width: 32px;
+  height: 32px;
+}
+
+.sketch-color-picker__options button.is-selected {
+  outline: 2px dashed var(--outline-primary);
+  outline-offset: 1px;
+
+  border-radius: 50%;
+}
+
+.session-chart-color-control {
+  display: flex;
+  align-items: center;
+
+  gap: 0.35rem;
+}
+
+.session-chart-color-picker-wrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+}
+
+.session-chart-color-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  background: transparent;
+  border: 0;
+}
+
+.session-chart-color-trigger .sketch-color-swatch {
+  width: 32px;
+  height: 32px;
+
+  display: block;
+}
+
+.session-chart-color-trigger:hover {
+  transform: scale(1.06);
+}
+
+.session-chart-color-trigger:focus-visible {
+  outline: 2px dashed var(--outline-primary);
+  outline-offset: 2px;
+
+  border-radius: 50%;
+}
+
+.session-chart-color-popover {
+  position: absolute;
+
+  z-index: 20;
+
+  top: calc(100% + 8px);
+  left: 50%;
+
+  width: max-content;
+
+  padding: 8px 10px 10px;
+
+  color: var(--text-primary);
+
+  background-color: var(--background-primary);
+  background-image: var(--background-image);
+  background-size: cover;
+  background-position: center;
+
+  border: 2px solid var(--outline-primary);
+  border-radius: 7px 5px 8px 6px;
+
+  transform: translateX(-50%);
+}

@@ -1,0 +1,73 @@
+.solve-history {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.solve-history > .sketch-panel {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.solve-history > .sketch-panel > .sketch-panel-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.solve-history__column-header {
+  display: grid;
+  flex: 0 0 auto;
+  grid-template-columns: 2rem 1fr 1fr 1fr;
+  align-items: center;
+  width: 100%;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.solve-history__divider {
+  flex: 0 0 auto;
+  width: 100%;
+  margin: 0.25rem 0 0.35rem;
+  border-top: 2px dashed currentColor;
+  opacity: 0.35;
+}
+
+.solve-history__list {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+.solve-history__list::-webkit-scrollbar {
+  display: none;
+}
+
+.solve-history__settings-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.solve-history__settings-button img {
+  width: 1.5rem;
+  height: 1.5rem;
+}

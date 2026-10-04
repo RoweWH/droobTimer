@@ -1,0 +1,54 @@
+.mbld-scrambles-modal {
+  width: max-content;
+  max-width: calc(100vw - 32px);
+  max-height: min(760px, calc(100vh - 32px));
+}
+
+.mbld-scrambles-modal__header {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 18px 18px 12px;
+}
+
+.mbld-scrambles-modal__header h2 {
+  margin: 0;
+
+  font-family: var(--font-note);
+  font-size: 42px;
+  line-height: 1;
+}
+
+.mbld-scrambles-modal__header button {
+  position: absolute;
+  right: 18px;
+
+  padding: 0;
+
+  background: transparent;
+  border: 0;
+
+  font: inherit;
+  font-size: 28px;
+
+  color: inherit;
+  cursor: pointer;
+}
+
+.mbld-scrambles-modal__content {
+  display: grid;
+  gap: 10px;
+
+  padding: 0 18px 18px;
+
+  overflow-y: auto;
+}
+
+.mbld-scrambles-modal__scramble {
+  display: flex;
+  gap: 10px;
+  white-space: nowrap;
+}

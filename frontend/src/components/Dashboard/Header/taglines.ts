@@ -1,0 +1,18 @@
+export const TAGLINES = [
+  ' trusted by absolutely nobody',
+  ' built on vibes, powered by chicken wings',
+  ' your averages deserve better',
+  ' designed differently, mostly incorrectly',
+  ` please don't inspect the code`,
+  ' now with more bugs than features',
+  ' you could be using csTimer',
+  ' powered by questionable decisions',
+  ' precision sold separately',
+  ' 105% hand drawn user interface technology',
+  ' creating problems nobody asked for since 2026',
+  ' our art department resigned yesterday',
+  ' finding exciting new ways to waste your time',
+  ` building tomorrow's bugs today`,
+  ' compatible with all legal and illegal events',
+  ' just the worst',
+] as const;

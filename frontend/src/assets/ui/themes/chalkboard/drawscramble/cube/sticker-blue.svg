@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <rect
+    x="5"
+    y="5"
+    width="90"
+    height="90"
+    rx="0"
+    ry="0"
+    fill="#4c8ed8"
+    stroke="#25231f"
+    stroke-width="5"
+    stroke-linejoin="miter"
+    shape-rendering="geometricPrecision"
+  />
+</svg>

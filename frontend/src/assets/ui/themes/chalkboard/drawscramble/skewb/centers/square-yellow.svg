@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <clipPath id="square-clip-yellow">
+      <path d="M-1 -1 H101 V101 H-1 Z"/>
+    </clipPath>
+  </defs>
+  <path d="M-1 -1 H101 V101 H-1 Z" fill="#f1d84d"/>
+  <g clip-path="url(#square-clip-yellow)" fill="none" stroke="#aa932d" stroke-width="1.35" stroke-linecap="round" opacity="0.44">
+    <path d="M3 13 C29 7 61 21 97 10"/>
+    <path d="M4 31 C27 24 68 38 96 27"/>
+    <path d="M3 49 C33 40 63 56 97 44"/>
+    <path d="M4 67 C30 58 67 74 96 61"/>
+    <path d="M3 85 C31 75 64 91 97 79"/>
+  </g>
+  <path d="M0 0 H100 V100 H0 Z" fill="none" stroke="#242424" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M.7 .9 L99.2 .4 L99.1 99.1 L.6 99.4 Z" fill="none" stroke="#242424" stroke-width="0.82" stroke-linecap="round" stroke-linejoin="round" opacity="0.58"/>
+</svg>

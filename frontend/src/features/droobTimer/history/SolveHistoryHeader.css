@@ -1,0 +1,42 @@
+.solve-history-header {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  box-sizing: border-box;
+}
+
+.solve-history-header__session-select {
+  flex: 1;
+  min-width: 8rem;
+}
+
+.solve-history-header__clear-button {
+  flex-shrink: 0;
+}
+
+.solve-history-header__settings-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  color: inherit;
+
+  background: none;
+  border: none;
+
+  cursor: pointer;
+}
+
+.solve-history-header__settings-button:hover {
+  opacity: 0.7;
+}
+
+.solve-history-header__settings-button img {
+  width: 1.5rem;
+  height: 1.5rem;
+}

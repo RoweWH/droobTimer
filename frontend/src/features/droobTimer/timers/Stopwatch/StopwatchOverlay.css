@@ -1,0 +1,40 @@
+.stopwatch-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--background-primary);
+  background-image: var(--background-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.stopwatch-overlay__time {
+  font-size: 10rem;
+  font-family: var(--font-title);
+  color: var(--text-primary);
+}
+
+.stopwatch-overlay__phases {
+  position: absolute;
+  top: 50%;
+  right: 3rem;
+  transform: translateY(-50%);
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  text-align: right;
+}
+
+.stopwatch-overlay__phase {
+  font-size: 2rem;
+  font-family: var(--font-title);
+  color: var(--text-primary);
+}

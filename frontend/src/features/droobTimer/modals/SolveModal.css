@@ -1,0 +1,107 @@
+.solve-modal {
+  width: 650px;
+}
+
+.solve-modal__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 2rem;
+}
+
+.solve-modal__header {
+  position: relative;
+
+  width: 100%;
+}
+
+.solve-modal__scramble {
+  margin: 0 3rem;
+
+  font-size: 1.4rem;
+  font-weight: normal;
+  text-align: center;
+}
+
+.solve-modal__close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  background: none;
+  border: none;
+
+  font-size: 1.8rem;
+
+  cursor: pointer;
+}
+
+.solve-modal__puzzle-space {
+  height: 220px;
+}
+
+.solve-modal__result-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 2rem;
+
+  width: 100%;
+}
+
+.solve-modal__result {
+  font-family: var(--font-title);
+  font-size: 5rem;
+
+  white-space: nowrap;
+}
+
+.solve-modal__notes {
+  width: 60%;
+
+  margin-top: 2rem;
+}
+
+.solve-modal__controls {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 1rem;
+  margin-top: 4rem;
+}
+
+.solve-modal__button {
+  min-width: 85px;
+}
+
+.solve-modal__penalty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 0.35rem;
+}
+
+.solve-modal__penalty-count {
+  font-size: 0.8em;
+}
+
+.solve-modal__penalty-clear {
+  min-width: 65px;
+
+  padding: 0.2rem 0.6rem;
+
+  font-size: 0.8rem;
+}
+
+.solve-modal__delete {
+  color: red;
+}
+
+.solve-modal__save {
+  min-width: 140px;
+
+  margin-top: 1rem;
+}

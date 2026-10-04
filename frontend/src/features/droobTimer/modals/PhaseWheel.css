@@ -1,0 +1,52 @@
+.phase-wheel {
+  width: 12rem;
+  height: 8rem;
+
+  flex-shrink: 0;
+  overflow: hidden;
+
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+}
+
+.phase-wheel__list {
+  transition: transform 0.15s ease;
+}
+
+.phase-wheel__item {
+  height: 3rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  white-space: nowrap;
+
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.phase-wheel__item[data-distance='0'] {
+  transform: scale(1);
+  opacity: 1;
+  font-size: 1.4rem;
+}
+
+.phase-wheel__item[data-distance='1'] {
+  transform: scale(0.8);
+  opacity: 0.5;
+  font-size: 1.15rem;
+}
+
+.phase-wheel__item[data-distance='2'] {
+  transform: scale(0.65);
+  opacity: 0.2;
+  font-size: 1rem;
+}

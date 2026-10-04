@@ -1,0 +1,156 @@
+.mbld-result-modal {
+  width: 540px;
+}
+
+.mbld-result-modal__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 2rem 2.5rem 2.25rem;
+  box-sizing: border-box;
+}
+
+.mbld-result-modal__title {
+  margin: 0 0 1.25rem;
+  font-family: var(--font-title);
+  font-size: 2.8rem;
+  font-weight: normal;
+  text-align: center;
+}
+
+.mbld-result-modal__body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2.5rem;
+  width: 100%;
+  min-height: 150px;
+}
+
+.mbld-result-modal__entries {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.mbld-result-modal__entry {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.mbld-result-modal__label {
+  font-size: 0.95rem;
+}
+
+.mbld-result-modal__input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mbld-result-modal__number-input {
+  width: 78px;
+  height: 42px;
+}
+
+.mbld-result-modal__number-input .sketch-input__control,
+.mbld-result-modal__plus-two-input .sketch-input__control {
+  padding: 6px 10px;
+  text-align: center;
+}
+
+.mbld-result-modal__attempted {
+  font-family: var(--font-title);
+  font-size: 1.7rem;
+}
+
+.mbld-result-modal__preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  text-align: center;
+}
+
+.mbld-result-modal__score {
+  font-family: var(--font-title);
+  font-size: 3.5rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.mbld-result-modal__time {
+  margin-top: 0.35rem;
+  font-family: var(--font-title);
+  font-size: 1.9rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.mbld-result-modal__display-type {
+  margin-top: 0.65rem;
+  font-size: 0.85rem;
+  opacity: 0.55;
+}
+
+.mbld-result-modal__plus-two {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+}
+
+.mbld-result-modal__plus-two-input {
+  width: 70px;
+  height: 42px;
+}
+
+.mbld-result-modal__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.mbld-result-modal__button {
+  min-width: 110px;
+}
+
+.mbld-result-modal__button.is-active {
+  color: red;
+}
+
+@media (max-width: 600px) {
+  .mbld-result-modal {
+    width: min(540px, calc(100vw - 2rem));
+  }
+
+  .mbld-result-modal__inner {
+    padding: 1.5rem;
+  }
+
+  .mbld-result-modal__body {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .mbld-result-modal__entries {
+    align-items: center;
+  }
+
+  .mbld-result-modal__entry {
+    align-items: center;
+  }
+
+  .mbld-result-modal__actions {
+    flex-wrap: wrap;
+  }
+}

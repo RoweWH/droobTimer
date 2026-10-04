@@ -1,0 +1,135 @@
+.stats-modal {
+  width: 850px;
+}
+
+.stats-modal__inner {
+  padding: 1rem 2rem 2rem;
+}
+
+.stats-modal__header {
+  position: relative;
+}
+
+.stats-modal__header h2 {
+  margin: 0;
+  text-align: center;
+}
+
+.stats-modal__close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  padding: 0;
+
+  color: inherit;
+  background: none;
+  border: none;
+
+  font: inherit;
+  cursor: pointer;
+}
+
+.stats-modal__divider {
+  margin: 1.5rem 0;
+  border-top: 1px solid;
+  opacity: 0.5;
+}
+
+.stats-modal__content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4rem;
+}
+
+.stats-modal__average-header,
+.stats-modal__average-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  min-height: 2rem;
+}
+
+.stats-modal__average-header {
+  text-align: center;
+}
+
+.stats-modal__average-header h3 {
+  margin: 0;
+}
+
+.stats-modal__average-row > span {
+  text-align: center;
+}
+
+.stats-modal__average-name {
+  text-align: left !important;
+}
+
+.stats-modal__summary h3 {
+  margin: 0 0 0.5rem;
+  text-align: center;
+}
+
+.stats-modal__summary-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.5rem;
+  align-items: center;
+  min-height: 2rem;
+}
+
+.stats-modal__summary-row span:last-child {
+  text-align: right;
+}
+.stats-modal__graph-previews {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  height: 190px;
+  margin-top: 1.5rem;
+}
+
+.stats-modal__graph-previews > * {
+  min-width: 0;
+  min-height: 0;
+}
+
+.stats-modal__expanded-graph {
+  display: flex;
+  flex-direction: column;
+  height: min(560px, 68dvh);
+  min-height: 360px;
+}
+
+.stats-modal__expanded-heading {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.stats-modal__expanded-heading h3 {
+  margin: 0;
+  text-align: center;
+}
+
+.stats-modal__expanded-heading button {
+  position: absolute;
+  left: 0;
+  padding: 0;
+  color: inherit;
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+@media (max-width: 720px) {
+  .stats-modal__graph-previews {
+    grid-template-columns: 1fr;
+    height: 360px;
+  }
+}

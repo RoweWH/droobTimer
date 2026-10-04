@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="5 0 1190 52" fill="none" preserveAspectRatio="none"><defs><filter id="chalk_dd32b1c0" x="-8%" y="-8%" width="116%" height="116%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="2" seed="7" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="1.35" xChannelSelector="R" yChannelSelector="G"/></filter></defs><g filter="url(#chalk_dd32b1c0)" opacity=".96">
+  <!-- Style 5: wandering wavy strokes, no border -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-20 28C34 7 77 45 132 24S230 7 284 29S381 45 438 23S535 8 591 29S690 44 746 22S844 8 901 29S1000 44 1056 23S1155 8 1220 28" stroke="#ddafc3" stroke-width="6.8" opacity=".74"/>
+    <path d="M-16 34C39 14 82 48 138 30S236 13 291 34S389 47 445 28S543 14 599 34S697 47 753 27S852 14 908 34S1006 47 1063 29S1160 15 1220 33" stroke="#c886a3" stroke-width="3.2" opacity=".46"/>
+    <path d="M-12 20C41 5 87 37 142 18S240 5 296 22S394 37 451 17S549 6 606 22S704 36 761 17S859 5 916 22S1014 37 1071 18S1168 7 1218 20" stroke="#e0adc1" stroke-width="4.1" opacity=".58"/>
+
+    <path d="M58 31C81 20 102 21 126 29M311 23C335 13 355 15 379 24M565 31C589 20 611 21 635 29M819 23C843 13 865 15 889 24M1073 31C1097 20 1119 21 1143 29" stroke="#ddafc3" stroke-width="7.5" opacity=".62"/>
+    <path d="M170 34C194 42 216 40 239 29M424 19C448 11 470 13 493 24M678 34C702 42 724 40 747 29M932 19C956 11 978 13 1001 24" stroke="#c886a3" stroke-width="2.1" opacity=".4"/>
+  </g>
+</g></svg>

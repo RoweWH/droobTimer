@@ -1,0 +1,364 @@
+.sketch-line-graph {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.sketch-line-graph__label {
+  fill: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: 16px;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+  user-select: none;
+}
+
+.sketch-line-graph__hit {
+  cursor: pointer;
+}
+
+.sketch-line-graph__hit circle {
+  fill: transparent;
+  stroke: transparent;
+  transition: fill 120ms ease;
+}
+
+.sketch-line-graph__hit:hover circle {
+  fill: rgba(27, 27, 27, 0.12);
+}
+
+.sketch-line-graph__hit:focus {
+  outline: none;
+}
+
+.sketch-line-graph__hit:focus-visible circle {
+  fill: rgba(27, 27, 27, 0.16);
+  stroke: var(--outline-primary);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+}
+
+.session-line-chart {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+}
+
+/* ---------------- Controls ---------------- */
+
+.session-line-chart-controls {
+  flex: 0 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 0.5rem 0.75rem;
+  padding: 0.25rem 0 0.55rem;
+
+  color: var(--text-primary);
+
+  font-family: var(--font-title);
+  font-size: clamp(1rem, 1.7cqw, 1.35rem);
+  font-weight: 400;
+}
+
+.session-line-chart-controls label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.session-line-chart-controls input {
+  width: 4.5rem;
+  height: 2rem;
+
+  padding: 0.1rem 0.3rem;
+
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.3);
+
+  border: 1.5px solid var(--outline-primary);
+  border-radius: 5px 7px 4px 6px;
+
+  box-sizing: border-box;
+
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.session-line-chart-controls input::-webkit-inner-spin-button,
+.session-line-chart-controls input::-webkit-outer-spin-button {
+  margin: 0;
+
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.session-line-chart-controls input:focus-visible {
+  outline: 2px dashed var(--outline-primary);
+  outline-offset: 2px;
+}
+
+.session-line-chart-maximum {
+  font-family: var(--font-ui);
+  font-size: 0.85em;
+  font-weight: 400;
+}
+
+/* ---------------- Chart ---------------- */
+
+.session-line-chart-canvas {
+  position: relative;
+
+  flex: 1 1 0;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  overflow: hidden;
+}
+
+.session-line-chart-canvas svg {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+  overflow: visible;
+}
+
+.session-line-chart-y-label,
+.session-line-chart-x-label {
+  fill: var(--text-primary);
+
+  font-family: var(--font-ui);
+  font-size: 16px;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+
+  pointer-events: none;
+  user-select: none;
+}
+
+.session-line-chart-point {
+  cursor: pointer;
+}
+
+.session-line-chart-point circle {
+  fill: transparent;
+  stroke: transparent;
+  transition: fill 120ms ease;
+}
+
+.session-line-chart-point:hover circle {
+  fill: rgba(27, 27, 27, 0.12);
+}
+
+.session-line-chart-point:focus {
+  outline: none;
+}
+
+.session-line-chart-point:focus-visible circle {
+  fill: rgba(27, 27, 27, 0.16);
+
+  stroke: var(--outline-primary);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+}
+
+/* ---------------- Empty State ---------------- */
+
+.session-line-chart-empty {
+  position: absolute;
+  inset: 0;
+
+  display: grid;
+  place-items: center;
+
+  color: var(--text-primary);
+
+  font-family: var(--font-title);
+  font-size: clamp(1rem, 2cqw, 1.4rem);
+  font-weight: 400;
+
+  pointer-events: none;
+}
+
+/* ---------------- Compact Preview ---------------- */
+
+.session-line-chart--compact {
+  position: relative;
+
+  min-height: 0;
+  overflow: hidden;
+
+  transform: scale(0.985);
+  transform-origin: center;
+
+  transition:
+    transform 120ms ease,
+    filter 120ms ease;
+}
+
+.session-line-chart--compact:hover,
+.session-line-chart--compact:focus-within {
+  z-index: 1;
+
+  transform: scale(1);
+
+  filter: drop-shadow(2px 3px 2px rgba(27, 27, 27, 0.1));
+}
+
+.session-line-chart--compact .session-line-chart-canvas {
+  border: 1.5px solid var(--outline-primary);
+  border-radius: 7px 5px 8px 4px;
+
+  cursor: pointer;
+
+  transition: background-color 120ms ease;
+}
+
+.session-line-chart--compact .session-line-chart-canvas:hover {
+  background: rgba(145, 189, 224, 0.12);
+}
+
+.session-line-chart--compact .session-line-chart-canvas:focus-visible {
+  outline: 2px dashed var(--outline-primary);
+  outline-offset: -3px;
+}
+
+.session-line-chart--compact svg {
+  opacity: 0.88;
+}
+
+.session-line-chart-preview-label {
+  display: none;
+}
+
+/* ---------------- Preview Placement ---------------- */
+
+.session-stats-summary {
+  height: 100%;
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+}
+
+.session-stats-summary .session-stats-other-values {
+  flex: 0 0 auto;
+}
+
+.session-stats-graph-previews {
+  flex: 1 1 0;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  margin-top: clamp(0.35rem, 1cqh, 0.7rem);
+
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+
+  gap: clamp(0.3rem, 0.8cqh, 0.55rem);
+
+  overflow: hidden;
+}
+
+.session-stats-graph-previews > * {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+/* ---------------- Expanded Chart ---------------- */
+
+.session-line-chart--expanded {
+  flex: 1 1 0;
+  min-height: 0;
+}
+
+.session-stats--graph-expanded {
+  display: flex;
+  flex-direction: column;
+
+  padding-top: clamp(0.35rem, 1cqh, 0.7rem);
+
+  overflow: hidden;
+}
+
+.session-stats-expanded-heading {
+  position: relative;
+
+  flex: 0 0 auto;
+  min-height: 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: clamp(0.15rem, 0.6cqh, 0.4rem);
+}
+
+.session-stats-expanded-heading h3 {
+  width: 100%;
+  margin: 0;
+
+  color: var(--text-primary);
+
+  font-family: var(--font-title);
+  font-size: clamp(1.2rem, 2.2cqw, 1.75rem);
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+}
+
+.session-stats-expanded-heading button {
+  position: absolute;
+  left: 0;
+  top: 50%;
+
+  padding: 0.2rem 0.45rem;
+
+  color: var(--text-primary);
+  background: transparent;
+  border: 0;
+
+  font-family: var(--font-title);
+  font-size: clamp(0.95rem, 1.6cqw, 1.25rem);
+  font-weight: 400;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transform: translateY(-50%);
+}
+
+.session-stats-expanded-heading button:hover {
+  transform: translateY(-50%) rotate(-1deg) scale(1.05);
+}
+
+.session-stats-expanded-heading button:focus-visible {
+  outline: 2px dashed var(--outline-primary);
+  outline-offset: 2px;
+}
