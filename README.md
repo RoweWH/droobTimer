@@ -2,7 +2,7 @@
 
 <!-- Replace logo.png with your logo -->
 
-<img src="frontend/public/droobtimerlogo.png" alt="DroobTimer Logo" width="400">
+<img src="frontend/src/assets/ui/themes/paper/logo.svg" alt="DroobTimer Logo" width="400">
 
 # droobtimer
 
