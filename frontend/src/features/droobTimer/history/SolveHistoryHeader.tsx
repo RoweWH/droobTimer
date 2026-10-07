@@ -48,29 +48,29 @@ export function SolveHistoryHeader({
 
   return (
     <div className="solve-history-header">
-      <SketchSelect
-        className="solve-history-header__session-select"
-        value={String(activeSession.id)}
-        options={options}
-        onChange={handleSessionChange}
-      />
+      <div className="solve-history-header__top">
+        <SketchSelect
+          className="solve-history-header__session-select"
+          value={String(activeSession.id)}
+          options={options}
+          onChange={handleSessionChange}
+        />
 
-      <SketchButton className="solve-history-header__clear-button" onClick={onClearSession}>
-        clear
-      </SketchButton>
-
-      <div className="solve-history-header__stats">
-        <SketchButton onClick={onOpenStats}>stats</SketchButton>
+        <button
+          className="solve-history-header__settings-button"
+          type="button"
+          onClick={onOpenSettings}
+          aria-label="session settings"
+        >
+          <img src={theme.assets.icons.gear} alt="" />
+        </button>
       </div>
 
-      <button
-        className="solve-history-header__settings-button"
-        type="button"
-        onClick={onOpenSettings}
-        aria-label="session settings"
-      >
-        <img src={theme.assets.icons.gear} alt="" />
-      </button>
+      <div className="solve-history-header__actions">
+        <SketchButton onClick={onClearSession}>clear</SketchButton>
+
+        <SketchButton onClick={onOpenStats}>stats</SketchButton>
+      </div>
     </div>
   );
 }

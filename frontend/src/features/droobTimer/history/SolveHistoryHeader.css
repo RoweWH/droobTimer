@@ -1,26 +1,37 @@
 .solve-history-header {
   display: flex;
   flex: 0 0 auto;
-  align-items: center;
+  flex-direction: column;
   gap: 0.5rem;
+
   width: 100%;
   padding: 0.5rem 0.75rem;
   box-sizing: border-box;
 }
 
-.solve-history-header__session-select {
-  flex: 1;
-  min-width: 8rem;
+.solve-history-header__top {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, auto) 1fr;
+  align-items: center;
+
+  width: 100%;
+  min-width: 0;
 }
 
-.solve-history-header__clear-button {
-  flex-shrink: 0;
+.solve-history-header__session-select {
+  grid-column: 2;
+
+  width: auto;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .solve-history-header__settings-button {
   display: flex;
+  grid-column: 3;
   align-items: center;
   justify-content: center;
+  justify-self: end;
 
   padding: 0;
 
@@ -39,4 +50,12 @@
 .solve-history-header__settings-button img {
   width: 1.5rem;
   height: 1.5rem;
+}
+
+.solve-history-header__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+
+  width: 100%;
 }
