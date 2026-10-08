@@ -1,6 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import type { GeneratedPuzzle, WcaEventId } from '../../../tdrooble';
+import {
+  DrawScramblePanel,
+  type DrawScrambleMode,
+} from '../../../features/droobTimer/drawScramble/DrawScramblePanel';
 import { SolveHistory } from '../../../features/droobTimer/history/SolveHistory';
 import { SessionSettingsModal } from '../../../features/droobTimer/history/SessionSettingsModal';
 import { Scrambler } from '../../../features/droobTimer/scrambler/Scrambler';
@@ -39,6 +43,7 @@ export function CenterPanel({ timerSettings }: CenterPanelProps) {
   const [sessions, setSessions] = useState<Session[]>([]);
   const [activeSession, setActiveSession] = useState<ActiveSession | null>(null);
   const [scramble, setScramble] = useState<GeneratedPuzzle | null>(null);
+  const [drawScrambleMode, setDrawScrambleMode] = useState<DrawScrambleMode>('background');
   const [isSessionSettingsOpen, setIsSessionSettingsOpen] = useState(false);
 
   const changePuzzle = useCallback((puzzle: GeneratedPuzzle) => {
@@ -284,6 +289,16 @@ export function CenterPanel({ timerSettings }: CenterPanelProps) {
                 onUpdateSession={updateSession}
                 onSolveComplete={() => setScramble(null)}
               />
+            )}
+
+            {scramble && (
+              <div className="center-panel__draw-scramble">
+                <DrawScramblePanel
+                  puzzle={scramble}
+                  mode={drawScrambleMode}
+                  onModeChange={setDrawScrambleMode}
+                />
+              </div>
             )}
           </div>
 

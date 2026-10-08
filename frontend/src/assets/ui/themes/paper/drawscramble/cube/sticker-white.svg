@@ -1,15 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-  <rect
-    x="5"
-    y="5"
-    width="90"
-    height="90"
-    rx="0"
-    ry="0"
-    fill="#f8f4e8"
-    stroke="#25231f"
-    stroke-width="5"
-    stroke-linejoin="miter"
-    shape-rendering="geometricPrecision"
-  />
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+<g fill="none" stroke="#292724" stroke-linejoin="round" stroke-linecap="round">
+<path d="M 7 9 L 32 7 L 61 8 L 91 7 L 93 32 L 92 65 L 93 91 L 64 92 L 35 91 L 8 93 L 7 63 L 8 36 Z" stroke-width="3.4" opacity="0.95"/>
+<path d="M 9 8 L 42 9 L 90 9 L 91 47 L 91 89 L 51 90 L 9 91 L 9 49 Z" stroke-width="1.2" opacity="0.55"/>
+</g>
 </svg>

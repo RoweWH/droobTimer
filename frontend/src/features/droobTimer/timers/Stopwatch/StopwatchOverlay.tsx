@@ -1,3 +1,5 @@
+import { createPortal } from 'react-dom';
+
 import { formatTime } from '../../utils/formatTime';
 
 import './StopwatchOverlay.css';
@@ -32,7 +34,7 @@ function getDisplayTime(time: number, update: StopwatchOverlayProps['update']): 
 export function StopwatchOverlay({ time, phases, update }: StopwatchOverlayProps) {
   const completedPhases = phases.filter(phase => phase.value !== null);
 
-  return (
+  return createPortal(
     <div className="stopwatch-overlay">
       <div className="stopwatch-overlay__time">{getDisplayTime(time, update)}</div>
 
@@ -46,6 +48,7 @@ export function StopwatchOverlay({ time, phases, update }: StopwatchOverlayProps
           ))}
         </div>
       )}
-    </div>
+    </div>,
+    document.body
   );
 }
