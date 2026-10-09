@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import type { GeneratedPuzzle, WcaEventId } from '../../../tdrooble';
 import {
@@ -43,12 +43,39 @@ export function CenterPanel({ timerSettings }: CenterPanelProps) {
   const [sessions, setSessions] = useState<Session[]>([]);
   const [activeSession, setActiveSession] = useState<ActiveSession | null>(null);
   const [scramble, setScramble] = useState<GeneratedPuzzle | null>(null);
+  const [previousPuzzle, setPreviousPuzzle] = useState<GeneratedPuzzle | null>(null);
   const [drawScrambleMode, setDrawScrambleMode] = useState<DrawScrambleMode>('background');
   const [isSessionSettingsOpen, setIsSessionSettingsOpen] = useState(false);
 
-  const changePuzzle = useCallback((puzzle: GeneratedPuzzle) => {
+  function changePuzzle(puzzle: GeneratedPuzzle) {
+    if (scramble) {
+      setPreviousPuzzle(scramble);
+    }
+
     setScramble(puzzle);
-  }, []);
+  }
+
+  function showPreviousPuzzle() {
+    if (!previousPuzzle) {
+      return;
+    }
+
+    setScramble(previousPuzzle);
+    setPreviousPuzzle(null);
+  }
+
+  function completeSolve() {
+    if (scramble) {
+      setPreviousPuzzle(scramble);
+    }
+
+    setScramble(null);
+  }
+
+  function resetScramble() {
+    setScramble(null);
+    setPreviousPuzzle(null);
+  }
 
   useEffect(() => {
     async function loadSessions() {
@@ -58,7 +85,6 @@ export function CenterPanel({ timerSettings }: CenterPanelProps) {
       const savedSessionId = getSavedActiveSessionId();
 
       const savedSession = storedSessions.find(session => session.id === savedSessionId);
-
       const session = savedSession ?? getMostRecentSession(storedSessions);
 
       if (!session) {
@@ -91,22 +117,22 @@ export function CenterPanel({ timerSettings }: CenterPanelProps) {
     void loadSessions();
   }, []);
 
- async function updateSession(updatedSession: ActiveSession) {
-   if (updatedSession.eventId !== activeSession?.eventId) {
-     setScramble(null);
-   }
+  async function updateSession(updatedSession: ActiveSession) {
+    if (updatedSession.eventId !== activeSession?.eventId) {
+      resetScramble();
+    }
 
-   setActiveSession(updatedSession);
+    setActiveSession(updatedSession);
 
-   setSessions(current =>
-     current.map(session =>
-       session.id === updatedSession.id ? toSession(updatedSession) : session
-     )
-   );
+    setSessions(current =>
+      current.map(session =>
+        session.id === updatedSession.id ? toSession(updatedSession) : session
+      )
+    );
 
-   await saveSession(toSession(updatedSession));
-   await syncSolves(updatedSession.id, updatedSession.solves);
- }
+    await saveSession(toSession(updatedSession));
+    await syncSolves(updatedSession.id, updatedSession.solves);
+  }
 
   async function changeEvent(nextEventId: WcaEventId) {
     const matchingSessions = sessions.filter(session => session.eventId === nextEventId);
@@ -147,7 +173,7 @@ export function CenterPanel({ timerSettings }: CenterPanelProps) {
     });
 
     setActiveSession(accessedSession);
-    setScramble(null);
+    resetScramble();
 
     saveActiveSessionId(accessedSession.id);
   }
@@ -173,7 +199,7 @@ export function CenterPanel({ timerSettings }: CenterPanelProps) {
     );
 
     setActiveSession(accessedSession);
-    setScramble(null);
+    resetScramble();
 
     saveActiveSessionId(accessedSession.id);
   }
@@ -194,7 +220,7 @@ export function CenterPanel({ timerSettings }: CenterPanelProps) {
       solves: [],
     });
 
-    setScramble(null);
+    resetScramble();
 
     saveActiveSessionId(newSession.id);
 
@@ -249,7 +275,7 @@ export function CenterPanel({ timerSettings }: CenterPanelProps) {
       saveActiveSessionId(loadedSession.id);
     }
 
-    setScramble(null);
+    resetScramble();
     setIsSessionSettingsOpen(false);
   }
 
@@ -264,8 +290,10 @@ export function CenterPanel({ timerSettings }: CenterPanelProps) {
           <Scrambler
             eventId={activeSession.eventId}
             puzzle={scramble}
+            previousPuzzle={previousPuzzle}
             onEventChange={changeEvent}
             onPuzzleChange={changePuzzle}
+            onPreviousPuzzle={showPreviousPuzzle}
           />
         </div>
 
@@ -279,7 +307,7 @@ export function CenterPanel({ timerSettings }: CenterPanelProps) {
                 puzzle={scramble}
                 timerSettings={timerSettings}
                 onUpdateSession={updateSession}
-                onSolveComplete={() => setScramble(null)}
+                onSolveComplete={completeSolve}
               />
             ) : (
               <StandardTimer
@@ -287,7 +315,7 @@ export function CenterPanel({ timerSettings }: CenterPanelProps) {
                 puzzle={scramble}
                 timerSettings={timerSettings}
                 onUpdateSession={updateSession}
-                onSolveComplete={() => setScramble(null)}
+                onSolveComplete={completeSolve}
               />
             )}
 

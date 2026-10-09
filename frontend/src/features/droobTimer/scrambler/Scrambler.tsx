@@ -12,13 +12,21 @@ import { MbldScrambleModal } from './MbldScrambleModal';
 type ScramblerProps = {
   eventId: WcaEventId;
   puzzle: GeneratedPuzzle | null;
+  previousPuzzle: GeneratedPuzzle | null;
   onEventChange: (eventId: WcaEventId) => void;
   onPuzzleChange: (puzzle: GeneratedPuzzle) => void;
+  onPreviousPuzzle: () => void;
 };
 
-export function Scrambler({ eventId, puzzle, onEventChange, onPuzzleChange }: ScramblerProps) {
+export function Scrambler({
+  eventId,
+  puzzle,
+  previousPuzzle,
+  onEventChange,
+  onPuzzleChange,
+  onPreviousPuzzle,
+}: ScramblerProps) {
   const [isGenerating, setIsGenerating] = useState(false);
-  const [previousPuzzle, setPreviousPuzzle] = useState<GeneratedPuzzle | null>(null);
   const [mbldCubeCount, setMbldCubeCount] = useState('5');
   const [mbldModalOpen, setMbldModalOpen] = useState(false);
 
@@ -35,7 +43,6 @@ export function Scrambler({ eventId, puzzle, onEventChange, onPuzzleChange }: Sc
         eventId === 'mbld' ? Number(mbldCubeCount) : 1
       );
 
-      setPreviousPuzzle(puzzle);
       onPuzzleChange(nextPuzzle);
     } finally {
       setIsGenerating(false);
@@ -47,7 +54,6 @@ export function Scrambler({ eventId, puzzle, onEventChange, onPuzzleChange }: Sc
   }
 
   const scrambleText = puzzle && !Array.isArray(puzzle.scramble) ? puzzle.scramble : '';
-
   const formattedScramble = formatScramble(puzzle?.eventId ?? eventId, scrambleText);
 
   useEffect(() => {
@@ -61,7 +67,7 @@ export function Scrambler({ eventId, puzzle, onEventChange, onPuzzleChange }: Sc
       return;
     }
 
-    onPuzzleChange(previousPuzzle);
+    onPreviousPuzzle();
 
     if (previousPuzzle.eventId === 'mbld') {
       setMbldCubeCount(
@@ -70,8 +76,6 @@ export function Scrambler({ eventId, puzzle, onEventChange, onPuzzleChange }: Sc
 
       setMbldModalOpen(true);
     }
-
-    setPreviousPuzzle(null);
   }
 
   async function autoOpenMbldScrambles() {
@@ -139,7 +143,6 @@ export function Scrambler({ eventId, puzzle, onEventChange, onPuzzleChange }: Sc
                 disabled={isGenerating}
                 onChange={event => {
                   const value = Math.min(Number(event.target.value), 100);
-
                   setMbldCubeCount(String(value));
                 }}
                 onBlur={autoOpenMbldScrambles}
