@@ -1,1 +1,0 @@
-export { CubeNet } from './CubeNet';

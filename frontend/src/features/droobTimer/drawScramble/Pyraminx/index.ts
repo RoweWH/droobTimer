@@ -1,0 +1,1 @@
+export { PyraminxNet } from './PyraminxNet';
