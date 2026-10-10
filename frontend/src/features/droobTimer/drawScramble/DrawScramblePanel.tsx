@@ -3,7 +3,9 @@ import { SketchButton } from '../../../components/Sketch';
 import type { GeneratedPuzzle } from '../../../tdrooble';
 import { CubeNet } from './Cube';
 import { PyraminxNet } from './Pyraminx';
+import { SkewbNet } from './Skewb';
 import type { PyraminxState } from './Pyraminx/types';
+import type { SkewbState } from './Skewb/types';
 import './DrawScramble.css';
 
 export type DrawScrambleMode = 'background' | 'standard';
@@ -37,6 +39,8 @@ export function DrawScramblePanel({ puzzle, mode, onModeChange }: DrawScramblePa
       <CubeNet size={size} state={puzzle.state} />
     ) : puzzle.puzzleId === 'pyraminx' ? (
       <PyraminxNet state={puzzle.state as PyraminxState} />
+    ) : puzzle.puzzleId === 'skewb' ? (
+      <SkewbNet state={puzzle.state as SkewbState} />
     ) : null;
 
   if (!drawing) return null;
