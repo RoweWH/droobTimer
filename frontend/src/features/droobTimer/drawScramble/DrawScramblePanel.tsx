@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { SketchButton } from '../../../components/Sketch';
 import type { GeneratedPuzzle } from '../../../tdrooble';
 import { CubeNet } from './Cube';
+import { ClockNet } from './Clock/ClockNet';
 import { PyraminxNet } from './Pyraminx';
 import { SkewbNet } from './Skewb';
 import type { PyraminxState } from './Pyraminx/types';
@@ -37,6 +38,8 @@ export function DrawScramblePanel({ puzzle, mode, onModeChange }: DrawScramblePa
   const drawing =
     size !== undefined ? (
       <CubeNet size={size} state={puzzle.state} />
+    ) : puzzle.puzzleId === 'clock' ? (
+      <ClockNet state={puzzle.state as Record<string, { orientation: number[] }>} />
     ) : puzzle.puzzleId === 'pyraminx' ? (
       <PyraminxNet state={puzzle.state as PyraminxState} />
     ) : puzzle.puzzleId === 'skewb' ? (

@@ -1,6 +1,6 @@
 import { useTheme } from '../../../context/ThemeContext';
 
-type SketchClockStickerColor = 'white' | 'blue';
+type SketchClockStickerColor = 'white' | 'blue' | 'black';
 
 type SketchClockStickerProps = {
   color: SketchClockStickerColor;

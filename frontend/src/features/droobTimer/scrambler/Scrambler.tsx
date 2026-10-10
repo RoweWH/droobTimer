@@ -57,10 +57,29 @@ export function Scrambler({
   const formattedScramble = formatScramble(puzzle?.eventId ?? eventId, scrambleText);
 
   useEffect(() => {
-    if (puzzle === null) {
-      void generateNextPuzzle();
+    if (puzzle !== null) {
+      return;
     }
-  }, [puzzle, eventId]);
+
+    let cancelled = false;
+
+    async function generateInitialPuzzle() {
+      const nextPuzzle = await generatePuzzle(
+        eventId,
+        eventId === 'mbld' ? Number(mbldCubeCount) : 1
+      );
+
+      if (!cancelled) {
+        onPuzzleChange(nextPuzzle);
+      }
+    }
+
+    void generateInitialPuzzle();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [puzzle, eventId, mbldCubeCount, onPuzzleChange]);
 
   function showPreviousPuzzle() {
     if (!previousPuzzle) {
