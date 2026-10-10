@@ -4,7 +4,7 @@ import { paperTheme } from './paper';
 export const THEME_NAMES = ['paper', 'chalkboard'] as const;
 export type ThemeName = (typeof THEME_NAMES)[number];
 
-export const DEFAULT_THEME_NAME: ThemeName = 'paper';
+export const DEFAULT_THEME_NAME: ThemeName = 'chalkboard';
 
 const themes = {
   paper: paperTheme,

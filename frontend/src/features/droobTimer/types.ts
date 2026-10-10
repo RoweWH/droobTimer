@@ -139,7 +139,7 @@ export type TimerSettings = {
 
 export const DEFAULT_TIMER_SETTINGS: TimerSettings = {
   input: 'spacebar',
-  inspection: 'wca',
+  inspection: 'none',
   exceptions: ['333bf'],
   update: '.xx',
 };
