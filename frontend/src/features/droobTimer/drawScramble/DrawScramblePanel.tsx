@@ -5,6 +5,7 @@ import { CubeNet } from './Cube';
 import { ClockNet } from './Clock/ClockNet';
 import { PyraminxNet } from './Pyraminx';
 import { SkewbNet } from './Skewb';
+import { Sq1Net } from './Sq1/Sq1Net';
 import type { PyraminxState } from './Pyraminx/types';
 import type { SkewbState } from './Skewb/types';
 import './DrawScramble.css';
@@ -44,6 +45,8 @@ export function DrawScramblePanel({ puzzle, mode, onModeChange }: DrawScramblePa
       <PyraminxNet state={puzzle.state as PyraminxState} />
     ) : puzzle.puzzleId === 'skewb' ? (
       <SkewbNet state={puzzle.state as SkewbState} />
+    ) : puzzle.puzzleId === 'square1' ? (
+      <Sq1Net scramble={puzzle.scramble} />
     ) : null;
 
   if (!drawing) return null;
