@@ -1,11 +1,11 @@
-import whiteBlueRed from './corner-d-blue-red.svg';
-import whiteGreenOrange from './corner-d-green-orange.svg';
-import whiteOrangeBlue from './corner-d-orange-blue.svg';
-import whiteRedGreen from './corner-d-red-green.svg';
-import blackBlueRed from './corner-u-blue-red.svg';
-import blackGreenOrange from './corner-u-green-orange.svg';
-import blackOrangeBlue from './corner-u-orange-blue.svg';
-import blackRedGreen from './corner-u-red-green.svg';
+import whiteBlueRed from './corner-d-blue-red.webp';
+import whiteGreenOrange from './corner-d-green-orange.webp';
+import whiteOrangeBlue from './corner-d-orange-blue.webp';
+import whiteRedGreen from './corner-d-red-green.webp';
+import blackBlueRed from './corner-u-blue-red.webp';
+import blackGreenOrange from './corner-u-green-orange.webp';
+import blackOrangeBlue from './corner-u-orange-blue.webp';
+import blackRedGreen from './corner-u-red-green.webp';
 
 export const corner = {
   'white-blue-red': whiteBlueRed,

@@ -1,9 +1,9 @@
-import blue from './sticker-blue.svg';
-import green from './sticker-green.svg';
-import orange from './sticker-orange.svg';
-import red from './sticker-red.svg';
-import white from './sticker-white.svg';
-import yellow from './sticker-yellow.svg';
+import blue from './sticker-blue.webp';
+import green from './sticker-green.webp';
+import orange from './sticker-orange.webp';
+import red from './sticker-red.webp';
+import white from './sticker-white.webp';
+import yellow from './sticker-yellow.webp';
 
 export const cube = {
    blue,

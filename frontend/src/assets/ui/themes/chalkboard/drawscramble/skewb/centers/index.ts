@@ -1,9 +1,9 @@
-import blue from './square-blue.svg';
-import green from './square-green.svg';
-import orange from './square-orange.svg';
-import red from './square-red.svg';
-import white from './square-white.svg';
-import yellow from './square-yellow.svg';
+import blue from './square-blue.webp';
+import green from './square-green.webp';
+import orange from './square-orange.webp';
+import red from './square-red.webp';
+import white from './square-white.webp';
+import yellow from './square-yellow.webp';
 
 export const center = {
   blue,

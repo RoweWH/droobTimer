@@ -1,5 +1,5 @@
-import even from './equator-even.svg';
-import odd from './equator-odd.svg';
+import even from './equator-even.webp';
+import odd from './equator-odd.webp';
 
 export const equator = {
   even,

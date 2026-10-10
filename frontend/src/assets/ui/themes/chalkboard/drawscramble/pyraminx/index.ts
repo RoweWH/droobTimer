@@ -1,7 +1,7 @@
-import blue from './triangle-blue.svg';
-import green from './triangle-green.svg';
-import red from './triangle-red.svg';
-import yellow from './triangle-yellow.svg';
+import blue from './triangle-blue.webp';
+import green from './triangle-green.webp';
+import red from './triangle-red.webp';
+import yellow from './triangle-yellow.webp';
 
 export const pyraminx = {
   blue,

@@ -1,13 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-import type { GeneratedPuzzle, WcaEventId } from '../../../tdrooble';
+import {
+  generatePuzzle,
+  type GeneratedPuzzle,
+  type WcaEventId,
+} from '../../../tdrooble';
+
 import {
   DrawScramblePanel,
   type DrawScrambleMode,
 } from '../../../features/droobTimer/drawScramble/DrawScramblePanel';
+
 import { SolveHistory } from '../../../features/droobTimer/history/SolveHistory';
 import { SessionSettingsModal } from '../../../features/droobTimer/history/SessionSettingsModal';
 import { Scrambler } from '../../../features/droobTimer/scrambler/Scrambler';
+
 import {
   createDefaultSession,
   deleteSession,
@@ -19,6 +26,7 @@ import {
   saveSession,
   syncSolves,
 } from '../../../features/droobTimer/storage';
+
 import { StandardTimer, MBLDTimer } from '../../../features/droobTimer/timers';
 import type { ActiveSession, Session, TimerSettings } from '../../../features/droobTimer/types';
 
@@ -47,34 +55,130 @@ export function CenterPanel({ timerSettings }: CenterPanelProps) {
   const [drawScrambleMode, setDrawScrambleMode] = useState<DrawScrambleMode>('background');
   const [isSessionSettingsOpen, setIsSessionSettingsOpen] = useState(false);
 
-  function changePuzzle(puzzle: GeneratedPuzzle) {
-    if (scramble) {
-      setPreviousPuzzle(scramble);
+  const [mbldCubeCount, setMbldCubeCount] = useState('5');
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [scrambleVersion, setScrambleVersion] = useState(0);
+
+  const generationId = useRef(0);
+  const nextScramble = useRef<Promise<GeneratedPuzzle> | null>(null);
+  const advancing = useRef(false);
+  const currentScramble = useRef<GeneratedPuzzle | null>(null);
+  const currentPrevious = useRef<GeneratedPuzzle | null>(null);
+
+  const eventId = activeSession?.eventId;
+  const cubeCount = eventId === 'mbld' ? Math.min(100, Math.max(2, Number(mbldCubeCount) || 2)) : 1;
+
+  function startPreparing(id: WcaEventId, count: number) {
+    const promise = generatePuzzle(id, count);
+
+    // Attach a rejection handler immediately so a background failure
+    // is not unhandled.
+    void promise.catch(() => {});
+
+    nextScramble.current = promise;
+  }
+
+  useEffect(() => {
+    if (!eventId) return;
+
+    const id = ++generationId.current;
+
+    nextScramble.current = null;
+    advancing.current = false;
+    currentScramble.current = null;
+    currentPrevious.current = null;
+
+    setScramble(null);
+    setPreviousPuzzle(null);
+    setIsGenerating(true);
+
+    async function initialize() {
+      try {
+        const initial = await generatePuzzle(eventId!, cubeCount);
+
+        if (id !== generationId.current) return;
+
+        currentScramble.current = initial;
+        setScramble(initial);
+
+        startPreparing(eventId!, cubeCount);
+      } catch (error) {
+        console.error('Unable to generate scramble:', error);
+      } finally {
+        if (id === generationId.current) {
+          setIsGenerating(false);
+        }
+      }
     }
 
-    setScramble(puzzle);
+    void initialize();
+
+    return () => {
+      generationId.current++;
+    };
+  }, [eventId, cubeCount, scrambleVersion]);
+
+  async function advanceScramble() {
+    if (!eventId || advancing.current) return;
+
+    advancing.current = true;
+    setIsGenerating(true);
+
+    const id = generationId.current;
+
+    try {
+      const prepared = nextScramble.current ?? generatePuzzle(eventId, cubeCount);
+
+      nextScramble.current = null;
+
+      const result = await prepared;
+
+      if (id !== generationId.current) return;
+
+      currentPrevious.current = currentScramble.current;
+      setPreviousPuzzle(currentPrevious.current);
+
+      currentScramble.current = result;
+      setScramble(result);
+
+      startPreparing(eventId, cubeCount);
+    } catch (error) {
+      console.error('Unable to advance scramble:', error);
+
+      if (id === generationId.current) {
+        startPreparing(eventId, cubeCount);
+      }
+    } finally {
+      if (id === generationId.current) {
+        advancing.current = false;
+        setIsGenerating(false);
+      }
+    }
   }
 
   function showPreviousPuzzle() {
-    if (!previousPuzzle) {
-      return;
-    }
+    if (!currentPrevious.current || advancing.current) return;
 
-    setScramble(previousPuzzle);
+    const previous = currentPrevious.current;
+
+    currentScramble.current = previous;
+    currentPrevious.current = null;
+
+    setScramble(previous);
     setPreviousPuzzle(null);
+
+    if (previous.eventId === 'mbld' && Array.isArray(previous.scramble)) {
+      setMbldCubeCount(String(previous.scramble.length));
+    }
   }
 
   function completeSolve() {
-    if (scramble) {
-      setPreviousPuzzle(scramble);
-    }
-
-    setScramble(null);
+    void advanceScramble();
   }
 
   function resetScramble() {
-    setScramble(null);
-    setPreviousPuzzle(null);
+    // Session changes with the same event still require a fresh scramble.
+    setScrambleVersion(value => value + 1);
   }
 
   useEffect(() => {
@@ -85,17 +189,14 @@ export function CenterPanel({ timerSettings }: CenterPanelProps) {
       const savedSessionId = getSavedActiveSessionId();
 
       const savedSession = storedSessions.find(session => session.id === savedSessionId);
+
       const session = savedSession ?? getMostRecentSession(storedSessions);
 
-      if (!session) {
-        return;
-      }
+      if (!session) return;
 
       const loadedSession = await getActiveSession(session.id);
 
-      if (!loadedSession) {
-        return;
-      }
+      if (!loadedSession) return;
 
       const accessedSession = {
         ...loadedSession,
@@ -149,9 +250,7 @@ export function CenterPanel({ timerSettings }: CenterPanelProps) {
 
     const loadedSession = await getActiveSession(nextSession.id);
 
-    if (!loadedSession) {
-      return;
-    }
+    if (!loadedSession) return;
 
     const accessedSession = {
       ...loadedSession,
@@ -176,14 +275,13 @@ export function CenterPanel({ timerSettings }: CenterPanelProps) {
     resetScramble();
 
     saveActiveSessionId(accessedSession.id);
+
   }
 
   async function changeSession(sessionId: number) {
     const loadedSession = await getActiveSession(sessionId);
 
-    if (!loadedSession) {
-      return;
-    }
+    if (!loadedSession) return;
 
     const accessedSession = {
       ...loadedSession,
@@ -205,9 +303,7 @@ export function CenterPanel({ timerSettings }: CenterPanelProps) {
   }
 
   async function createSession() {
-    if (!activeSession) {
-      return;
-    }
+    if (!activeSession) return;
 
     const newSession = createDefaultSession(activeSession.eventId);
 
@@ -223,14 +319,11 @@ export function CenterPanel({ timerSettings }: CenterPanelProps) {
     resetScramble();
 
     saveActiveSessionId(newSession.id);
-
     setIsSessionSettingsOpen(true);
   }
 
   function clearSession() {
-    if (!activeSession) {
-      return;
-    }
+    if (!activeSession) return;
 
     void updateSession({
       ...activeSession,
@@ -239,9 +332,7 @@ export function CenterPanel({ timerSettings }: CenterPanelProps) {
   }
 
   async function removeSession() {
-    if (!activeSession) {
-      return;
-    }
+    if (!activeSession) return;
 
     await deleteSession(activeSession.id);
 
@@ -265,9 +356,7 @@ export function CenterPanel({ timerSettings }: CenterPanelProps) {
 
       const loadedSession = await getActiveSession(nextSession.id);
 
-      if (!loadedSession) {
-        return;
-      }
+      if (!loadedSession) return;
 
       setSessions(remainingSessions);
       setActiveSession(loadedSession);
@@ -279,9 +368,7 @@ export function CenterPanel({ timerSettings }: CenterPanelProps) {
     setIsSessionSettingsOpen(false);
   }
 
-  if (!activeSession) {
-    return null;
-  }
+  if (!activeSession) return null;
 
   return (
     <main className="center-panel">
@@ -292,7 +379,10 @@ export function CenterPanel({ timerSettings }: CenterPanelProps) {
             puzzle={scramble}
             previousPuzzle={previousPuzzle}
             onEventChange={changeEvent}
-            onPuzzleChange={changePuzzle}
+            isGenerating={isGenerating}
+            mbldCubeCount={mbldCubeCount}
+            onMbldCubeCountChange={setMbldCubeCount}
+            onNextScramble={advanceScramble}
             onPreviousPuzzle={showPreviousPuzzle}
           />
         </div>

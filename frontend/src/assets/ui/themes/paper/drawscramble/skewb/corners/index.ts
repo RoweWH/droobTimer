@@ -1,9 +1,9 @@
-import blue from './triangle-blue.svg';
-import green from './triangle-green.svg';
-import orange from './triangle-orange.svg';
-import red from './triangle-red.svg';
-import white from './triangle-white.svg';
-import yellow from './triangle-yellow.svg';
+import blue from './triangle-blue.webp';
+import green from './triangle-green.webp';
+import orange from './triangle-orange.webp';
+import red from './triangle-red.webp';
+import white from './triangle-white.webp';
+import yellow from './triangle-yellow.webp';
 
 export const corner = {
   blue,

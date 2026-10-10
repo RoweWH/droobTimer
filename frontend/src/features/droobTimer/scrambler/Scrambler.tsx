@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { SketchButton, SketchInput, SketchSelect } from '../../../components/Sketch';
-import { generatePuzzle, type GeneratedPuzzle, type WcaEventId } from '../../../tdrooble';
+import { type GeneratedPuzzle, type WcaEventId } from '../../../tdrooble';
 
 import { formatScramble } from './formatScramble';
 import { WCA_EVENTS } from '../types';
@@ -14,7 +14,10 @@ type ScramblerProps = {
   puzzle: GeneratedPuzzle | null;
   previousPuzzle: GeneratedPuzzle | null;
   onEventChange: (eventId: WcaEventId) => void;
-  onPuzzleChange: (puzzle: GeneratedPuzzle) => void;
+  isGenerating: boolean;
+  mbldCubeCount: string;
+  onMbldCubeCountChange: (count: string) => void;
+  onNextScramble: () => Promise<void>;
   onPreviousPuzzle: () => void;
 };
 
@@ -23,31 +26,13 @@ export function Scrambler({
   puzzle,
   previousPuzzle,
   onEventChange,
-  onPuzzleChange,
+  isGenerating,
+  mbldCubeCount,
+  onMbldCubeCountChange,
+  onNextScramble,
   onPreviousPuzzle,
 }: ScramblerProps) {
-  const [isGenerating, setIsGenerating] = useState(false);
-  const [mbldCubeCount, setMbldCubeCount] = useState('5');
   const [mbldModalOpen, setMbldModalOpen] = useState(false);
-
-  async function generateNextPuzzle() {
-    if (isGenerating) {
-      return;
-    }
-
-    setIsGenerating(true);
-
-    try {
-      const nextPuzzle = await generatePuzzle(
-        eventId,
-        eventId === 'mbld' ? Number(mbldCubeCount) : 1
-      );
-
-      onPuzzleChange(nextPuzzle);
-    } finally {
-      setIsGenerating(false);
-    }
-  }
 
   function selectEvent(value: string) {
     onEventChange(value as WcaEventId);
@@ -55,31 +40,6 @@ export function Scrambler({
 
   const scrambleText = puzzle && !Array.isArray(puzzle.scramble) ? puzzle.scramble : '';
   const formattedScramble = formatScramble(puzzle?.eventId ?? eventId, scrambleText);
-
-  useEffect(() => {
-    if (puzzle !== null) {
-      return;
-    }
-
-    let cancelled = false;
-
-    async function generateInitialPuzzle() {
-      const nextPuzzle = await generatePuzzle(
-        eventId,
-        eventId === 'mbld' ? Number(mbldCubeCount) : 1
-      );
-
-      if (!cancelled) {
-        onPuzzleChange(nextPuzzle);
-      }
-    }
-
-    void generateInitialPuzzle();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [puzzle, eventId, mbldCubeCount, onPuzzleChange]);
 
   function showPreviousPuzzle() {
     if (!previousPuzzle) {
@@ -89,7 +49,7 @@ export function Scrambler({
     onPreviousPuzzle();
 
     if (previousPuzzle.eventId === 'mbld') {
-      setMbldCubeCount(
+      onMbldCubeCountChange(
         Array.isArray(previousPuzzle.scramble) ? previousPuzzle.scramble.length.toString() : '5'
       );
 
@@ -98,7 +58,7 @@ export function Scrambler({
   }
 
   async function autoOpenMbldScrambles() {
-    await generateNextPuzzle();
+    await onNextScramble();
     setMbldModalOpen(true);
   }
 
@@ -162,7 +122,7 @@ export function Scrambler({
                 disabled={isGenerating}
                 onChange={event => {
                   const value = Math.min(Number(event.target.value), 100);
-                  setMbldCubeCount(String(value));
+                  onMbldCubeCountChange(String(value));
                 }}
                 onBlur={autoOpenMbldScrambles}
                 onKeyDown={event => {
@@ -184,7 +144,7 @@ export function Scrambler({
             </SketchButton>
 
             <SketchButton
-              onClick={puzzle?.eventId === 'mbld' ? autoOpenMbldScrambles : generateNextPuzzle}
+              onClick={puzzle?.eventId === 'mbld' ? autoOpenMbldScrambles : onNextScramble}
               disabled={isGenerating}
             >
               next

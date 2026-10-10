@@ -1,15 +1,15 @@
-import cream from './center-cream.svg';
-import darkBlue from './center-dark-blue.svg';
-import darkGreen from './center-dark-green.svg';
-import gray from './center-gray.svg';
-import lightBlue from './center-light-blue.svg';
-import lightGreen from './center-light-green.svg';
-import orange from './center-orange.svg';
-import pink from './center-pink.svg';
-import purple from './center-purple.svg';
-import red from './center-red.svg';
-import white from './center-white.svg';
-import yellow from './center-yellow.svg';
+import cream from './center-cream.webp';
+import darkBlue from './center-dark-blue.webp';
+import darkGreen from './center-dark-green.webp';
+import gray from './center-gray.webp';
+import lightBlue from './center-light-blue.webp';
+import lightGreen from './center-light-green.webp';
+import orange from './center-orange.webp';
+import pink from './center-pink.webp';
+import purple from './center-purple.webp';
+import red from './center-red.webp';
+import white from './center-white.webp';
+import yellow from './center-yellow.webp';
 
 export const center = {
   cream,

@@ -1,15 +1,15 @@
-import cream from './edge-cream.svg';
-import darkBlue from './edge-dark-blue.svg';
-import darkGreen from './edge-dark-green.svg';
-import gray from './edge-gray.svg';
-import lightBlue from './edge-light-blue.svg';
-import lightGreen from './edge-light-green.svg';
-import orange from './edge-orange.svg';
-import pink from './edge-pink.svg';
-import purple from './edge-purple.svg';
-import red from './edge-red.svg';
-import white from './edge-white.svg';
-import yellow from './edge-yellow.svg';
+import cream from './edge-cream.webp';
+import darkBlue from './edge-dark-blue.webp';
+import darkGreen from './edge-dark-green.webp';
+import gray from './edge-gray.webp';
+import lightBlue from './edge-light-blue.webp';
+import lightGreen from './edge-light-green.webp';
+import orange from './edge-orange.webp';
+import pink from './edge-pink.webp';
+import purple from './edge-purple.webp';
+import red from './edge-red.webp';
+import white from './edge-white.webp';
+import yellow from './edge-yellow.webp';
 
 export const edge = {
   cream,
