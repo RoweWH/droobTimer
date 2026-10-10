@@ -131,7 +131,7 @@ export function Sq1Net({ scramble }: { scramble: string }) {
 
       <LayerDrawing layer={state.bottom} centerX={560} centerY={190} rotateForBottom />
 
-      <g transform="translate(300 372) scale(0.533333)">
+      <g transform="translate(300 355) scale(0.533333)">
         <SketchSq1Sticker kind="equator" flipped={state.equatorFlipped} />
       </g>
     </svg>
